@@ -68,9 +68,9 @@ def integrator(Atoms,sigma,epsilon,r,r_unit,dt,temp_bath,cell,charges,cutoff,cou
     Atoms = force(Atoms,sigma,epsilon,r,r_unit,cutoff)
     Atoms = potential(Atoms,sigma,epsilon,r,cutoff)
 
-    # if coul == True:
-    #     Atoms = coulomb_force(Atoms,charges,r,r_unit,cutoff)
-    #     Atoms = coulomb_potential(Atoms,charges,r,cutoff)
+    if coul == True:
+        Atoms = coulomb_force(Atoms,charges,r,r_unit,cutoff)
+        Atoms = coulomb_potential(Atoms,charges,r,cutoff)
 
     acc_old, Atoms = accel_update(Atoms)
     vel_update(Atoms,acc_old,dt)
